@@ -22,7 +22,7 @@ const Layout = () => {
                 </ul>
             </nav> */}
             <nav class="nav">
-                <h1>Loreflix</h1>
+                <h1 id="title">Loreflix</h1>
                 {/* <a href="#" class="logo">CodingLab</a> */}
                 <ul class="nav-links">
                 <li>

@@ -1,0 +1,24 @@
+.homepageContainer{
+    display: flex;
+    justify-content: left;
+    padding: 20px;
+}
+
+.trendingMovies{
+    color: #fff;
+    margin-left: 2em;
+    width: 90%
+}
+
+.trending-title{
+    position: relative;
+    margin-bottom: 0.5em;
+    color: #fff; /* Optional: Change the text color */
+}
+
+.cardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: left;
+}

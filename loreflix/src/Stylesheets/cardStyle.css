@@ -1,0 +1,31 @@
+.card {
+    --background: linear-gradient(to left, #462255 0%, #ea5358 100%);
+    width: 130px;
+    height: 190px;
+    padding: 5px;
+    border-radius: 1rem;
+    overflow: visible;
+    
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+}
+
+   
+.card-info {
+    --color: #181818;
+    background: var(--color);
+    color: var(--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: .7rem;
+}
+   
+.card .title {
+    font-weight: bold;
+    letter-spacing: .1em;
+}
