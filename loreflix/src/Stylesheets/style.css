@@ -22,10 +22,13 @@ body{
 
 .nav {
   /* position: fixed; */
+  /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%;
+  height: 90px;
   padding: 15px 200px;
+  background: #462255;
   background: #462255;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -37,6 +40,7 @@ body{
 .nav .nav-links {
   display: flex;
   align-items: center;
+  font-size: x-large;
 }
 
 a {
