@@ -1,12 +1,12 @@
-import { Outlet, Link } from "react-router-dom";
-import '../Stylesheets/style.css'
+import { Outlet, Link} from "react-router-dom";
+import '../Stylesheets/style.css';
 
 const Layout = () => {
     return (
         <div>
-            <nav class="nav">
+            <nav className="nav">
                 <h1 id="title">Loreflix</h1>
-                <ul class="nav-links">
+                <ul className="nav-links">
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -14,20 +14,16 @@ const Layout = () => {
                         <Link to="/HighestScore">Highest Score</Link>
                     </li>
                     <li>
-                        <Link to="/Trending">Trending Movies</Link>
+                        <Link to="/Trending">Trending right now</Link>
                     </li>
                     <li>
-                        <Link to="/SearchMovies">Search Movies</Link>
+                        <Link to="/SearchResults">Search Movies</Link>
                     </li>
                 </ul>
-                <div class="search-box">
-                    <input type="text" placeholder="Search here..." />
-                </div>
             </nav>
-
             <Outlet />
         </div>
-    )
+    );
 }
 
-export default Layout
+export default Layout;

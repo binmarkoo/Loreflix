@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Homepage from './components/Homepage';
 import Trending from './components/Trending';
-import SearchMovies from './components/SearchMovies';
 import HighestScore from './components/HighestScore';
 import Layout from './components/Layout';
 import NoPage from './components/NoPage';
 import './App.css';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="trending" element={<Trending />} />
           <Route path="highestscore" element={<HighestScore />} />
-          <Route path="searchmovies" element={<SearchMovies />} />
+          <Route path="searchresults" element={<SearchResults />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

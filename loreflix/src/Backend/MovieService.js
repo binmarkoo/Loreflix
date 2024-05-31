@@ -8,7 +8,7 @@ const options = {
 
 const getTrendingMovies = async () => {
     try {
-        const response = await fetch('https://api.themoviedb.org/3/trending/movie/day', options);
+        const response = await fetch('https://api.themoviedb.org/3/trending/movie/day?page=2', options);
         const data = await response.json();
         return data;
     } catch (err) {

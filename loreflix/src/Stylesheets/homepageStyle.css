@@ -4,10 +4,14 @@
     padding: 20px;
 }
 
-.trendingMovies{
-    color: #fff;
+.trending-section {
     margin-left: 2em;
     width: 90%
+}
+
+.trendingMovies{
+    color: #fff;
+    /* margin-left: 2em; */
 }
 
 .trending-title{
