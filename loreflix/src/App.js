@@ -4,8 +4,9 @@ import Trending from './components/Trending';
 import HighestScore from './components/HighestScore';
 import Layout from './components/Layout';
 import NoPage from './components/NoPage';
-import './App.css';
 import SearchResults from './components/SearchResults';
+import CardContent from './components/CardContent';
+import './App.css';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="trending" element={<Trending />} />
           <Route path="highestscore" element={<HighestScore />} />
           <Route path="searchresults" element={<SearchResults />} />
+          <Route path="content" element={<CardContent />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

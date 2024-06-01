@@ -2,8 +2,8 @@ import '../Stylesheets/cardStyle.css'
 
 const Card = ({ imgSrc, title }) => {
  return(
-    <div class="card">
-        <div class="card-info">
+    <div className="card">
+        <div className="card-info">
             {imgSrc ? (
                 <img src={imgSrc} alt={title} style={{ width: '100%', height: '100%', borderRadius: '.7rem' }} />
             ) : (

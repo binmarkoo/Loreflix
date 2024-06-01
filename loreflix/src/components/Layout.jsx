@@ -1,4 +1,4 @@
-import { Outlet, Link} from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import '../Stylesheets/style.css';
 
 const Layout = () => {
@@ -8,16 +8,16 @@ const Layout = () => {
                 <h1 id="title">Loreflix</h1>
                 <ul className="nav-links">
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/"><u>Home</u></Link>
                     </li>
                     <li>
-                        <Link to="/HighestScore">Highest Score</Link>
+                        <Link to="/HighestScore"><u>Highest Score</u></Link>
                     </li>
                     <li>
-                        <Link to="/Trending">Trending right now</Link>
+                        <Link to="/Trending"><u>Trending Right now</u></Link>
                     </li>
                     <li>
-                        <Link to="/SearchResults">Search Movies</Link>
+                        <Link to="/SearchResults"><u>Search Movies</u></Link>
                     </li>
                 </ul>
             </nav>
