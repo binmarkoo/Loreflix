@@ -9,12 +9,27 @@
     width: 90%
 }
 
-.trendingMovies{
-    color: #fff;
+.trendingMovies {
+    color: #ffffff;
     /* margin-left: 2em; */
 }
 
-.trending-title{
+.trendingShows {
+    color: #ffffff;
+    margin-top: 30px;
+}
+
+.ratedMovies {
+    color: #ffffff;
+    margin-top: 30px;
+}
+
+.ratedShows {
+    color: #ffffff;
+    margin-top: 30px;
+}
+
+.titles{
     position: relative;
     margin-bottom: 0.5em;
     color: #fff; /* Optional: Change the text color */

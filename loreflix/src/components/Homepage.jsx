@@ -61,7 +61,7 @@ const Homepage = () => {
         <div className="homepageContainer">
             <div className="trending-section">
                 <div className="trendingMovies">
-                    <h2 className="trending-title"><u>Trending Movies</u></h2>
+                    <h2 className="titles"><u>Top 10 Trending Movies</u></h2>
                     <div className="cardContainer">
                         {trendingMovies.filter((movie, index) => index < 10).map((movie) => (
                             <Card 
@@ -73,8 +73,8 @@ const Homepage = () => {
                     </div>
                 </div>
 
-                <div className="trendingMovies">
-                    <h2 className="trending-title"><u>Trending Shows</u></h2>
+                <div className="trendingShows">
+                    <h2 className="titles"><u>Top 10 Trending Shows</u></h2>
                     <div className="cardContainer">
                         {trendingShows.filter((show, index) => index < 10).map((show) => (
                             <Card 
@@ -86,8 +86,8 @@ const Homepage = () => {
                     </div>
                 </div>
 
-                <div className="trendingMovies">
-                    <h2 className="trending-title"><u>Top Rated Movies</u></h2>
+                <div className="ratedMovies">
+                    <h2 className="titles"><u>Top 10 Rated Movies</u></h2>
                     <div className="cardContainer">
                         {ratedMovies.filter((movie, index) => index < 10).map((movie) => (
                             <Card 
@@ -99,8 +99,8 @@ const Homepage = () => {
                     </div>
                 </div>
 
-                <div className="trendingMovies">
-                    <h2 className="trending-title"><u>Top Rated Shows</u></h2>
+                <div className="ratedShows">
+                    <h2 className="titles"><u>Top 10 Rated Shows</u></h2>
                     <div className="cardContainer">
                         {ratedShows.filter((show, index) => index < 10).map((show) => (
                             <Card 

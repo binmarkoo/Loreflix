@@ -11,6 +11,7 @@ h1{
 
 body{
     background-color: #181818;
+    padding-top: 80px;
 }
 
 * {
@@ -22,7 +23,8 @@ body{
 
 .nav {
   /* position: fixed; */
-  /* position: fixed; */
+  position: fixed;
+  z-index: 9999;               /* Ohne dem würde der Content die Navbar überlappen, hab auf die schnelle keine bessere Lösung gefunden */
   top: 0;
   left: 0;
   width: 100%;
