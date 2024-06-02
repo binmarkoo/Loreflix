@@ -15,7 +15,7 @@ const Homepage = () => {
     
     useEffect(() => {
         const fetchTrendingMovies = async () => {
-            const data = await getTrendingMovies();
+            const data = await getTrendingMovies(1);
             if (data && data.results) {
                 setTrendingMovies(data.results);
             }
@@ -26,7 +26,7 @@ const Homepage = () => {
 
     useEffect(() => {
         const fetchTrendingShows = async () => {
-            const data = await getTrendingShows();
+            const data = await getTrendingShows(1);
             if (data && data.results) {
                 setTrendingShows(data.results);
             }
@@ -37,7 +37,7 @@ const Homepage = () => {
 
     useEffect(() => {
         const fetchRatedMovies = async () => {
-            const data = await getBestRatedMovies();
+            const data = await getBestRatedMovies(1);
             if (data && data.results) {
                 setRatedMovies(data.results);
             }
@@ -48,7 +48,7 @@ const Homepage = () => {
 
     useEffect(() => {
         const fetchRatedShows = async () => {
-            const data = await getBestRatedShows();
+            const data = await getBestRatedShows(1);
             if (data && data.results) {
                 setRatedShows(data.results);
             }
@@ -59,7 +59,7 @@ const Homepage = () => {
 
     return(
         <div className="homepageContainer">
-            <div className="trending-section">
+            <div className="startpage-section">
                 <div className="trendingMovies">
                     <h2 className="titles"><u>Top 10 Trending Movies</u></h2>
                     <div className="cardContainer">

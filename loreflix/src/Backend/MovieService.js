@@ -6,9 +6,9 @@ const options = {
     }
 };
 
-const getTrendingMovies = async () => {
+const getTrendingMovies = async (page) => {
     try {
-        const response = await fetch('https://api.themoviedb.org/3/trending/movie/day?page=1', options);
+        const response = await fetch('https://api.themoviedb.org/3/trending/movie/day?page=' + page, options);
         const data = await response.json();
         return data;
     } catch (err) {
@@ -16,10 +16,11 @@ const getTrendingMovies = async () => {
     }
 };
 
-export const getBestRatedMovies = async () => {
+export const getBestRatedMovies = async (page) => {
     try {
-        const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+        const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=' + page, options)
         const data = await response.json()
+        console.log(data)
         return data
     } catch (err) {
         console.error(err)
