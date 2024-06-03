@@ -1,17 +1,17 @@
-import { Outlet, Link, useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
-import '../Stylesheets/style.css';
+import { Outlet, Link, useNavigate } from "react-router-dom"
+import React, { useState } from 'react'
+import '../Stylesheets/style.css'
 
 const Layout = () => {
-    const [searchQuery, setSearchQuery] = useState("");
-    const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState("")
+    const navigate = useNavigate()
 
     const handleSearch = (e) => {
         if (e.key === 'Enter') {
-            navigate(`/search?query=${searchQuery}`);
+            navigate(`/search?query=${searchQuery}`)
             //navigate('/search')
         }
-    };
+    }
 
     return (
         <div>
@@ -34,13 +34,13 @@ const Layout = () => {
                         <input class="searchbar" id="searchbar" placeholder="Search for movies and shows"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            onKeyDown={handleSearch}/>
+                            onKeyDown={handleSearch} />
                     </li>
                 </ul>
             </nav>
             <Outlet />
         </div>
-    );
+    )
 }
 
-export default Layout;
+export default Layout

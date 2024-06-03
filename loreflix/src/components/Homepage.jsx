@@ -1,17 +1,17 @@
 import getTrendingMovies from "../Backend/MovieService"
-import getTrendingShows from "../Backend/TVShowService";
-import { getBestRatedMovies } from "../Backend/MovieService";               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
-import { getBestRatedShows } from "../Backend/TVShowService";
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import getTrendingShows from "../Backend/TVShowService"
+import { getBestRatedMovies } from "../Backend/MovieService"               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
+import { getBestRatedShows } from "../Backend/TVShowService"
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom"
 import '../Stylesheets/style.css'
 import '../Stylesheets/homepageStyle.css'
 import Card from './Card'
 
 const Homepage = () => {
-    const [trendingMovies, setTrendingMovies] = useState([]);
+    const [trendingMovies, setTrendingMovies] = useState([])
     const [ratedMovies, setRatedMovies] = useState([])
-    const [trendingShows, setTrendingShows] = useState([]);
+    const [trendingShows, setTrendingShows] = useState([])
     const [ratedShows, setRatedShows] = useState([])
 
     const navigate = useNavigate()
@@ -26,47 +26,47 @@ const Homepage = () => {
 
     useEffect(() => {
         const fetchTrendingMovies = async () => {
-            const data = await getTrendingMovies(1);
+            const data = await getTrendingMovies(1)
             if (data && data.results) {
-                setTrendingMovies(data.results);
+                setTrendingMovies(data.results)
             }
-        };
+        }
 
-        fetchTrendingMovies();
-    }, []);
+        fetchTrendingMovies()
+    }, [])
 
     useEffect(() => {
         const fetchTrendingShows = async () => {
-            const data = await getTrendingShows(1);
+            const data = await getTrendingShows(1)
             if (data && data.results) {
-                setTrendingShows(data.results);
+                setTrendingShows(data.results)
             }
-        };
+        }
 
-        fetchTrendingShows();
-    }, []);
+        fetchTrendingShows()
+    }, [])
 
     useEffect(() => {
         const fetchRatedMovies = async () => {
-            const data = await getBestRatedMovies(1);
+            const data = await getBestRatedMovies(1)
             if (data && data.results) {
-                setRatedMovies(data.results);
+                setRatedMovies(data.results)
             }
-        };
+        }
 
-        fetchRatedMovies();
-    }, []);
+        fetchRatedMovies()
+    }, [])
 
     useEffect(() => {
         const fetchRatedShows = async () => {
-            const data = await getBestRatedShows(1);
+            const data = await getBestRatedShows(1)
             if (data && data.results) {
-                setRatedShows(data.results);
+                setRatedShows(data.results)
             }
-        };
+        }
 
-        fetchRatedShows();
-    }, []);
+        fetchRatedShows()
+    }, [])
 
     return (
         <div className="homepageContainer">
