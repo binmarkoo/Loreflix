@@ -86,9 +86,9 @@ const Trending = () => {
                 </div>
                 <div className="button-container">
                     {page > 1 && (
-                        <button onClick={previousPage}>Previous Page</button>
+                        <button onClick={previousPage} id="pageSwitcher">Previous Page</button>
                     )}
-                    <button onClick={nextPage}>Next Page</button>
+                    <button onClick={nextPage} id="pageSwitcher">Next Page</button>
                 </div>
             </div>
         </div>

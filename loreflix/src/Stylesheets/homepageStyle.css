@@ -1,4 +1,4 @@
-.homepageContainer{
+.homepageContainer {
     display: flex;
     justify-content: left;
     padding: 20px;
@@ -29,15 +29,51 @@
     margin-top: 30px;
 }
 
-.titles{
+.titles {
     position: relative;
     margin-bottom: 0.5em;
-    color: #fff; /* Optional: Change the text color */
+    color: #fff;
+    /* Optional: Change the text color */
 }
 
-.cardContainer{
+.cardContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: left;
+}
+
+#navigation {
+    width: 165px;
+    height: 62px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 1rem;
+    border: none;
+    position: relative;
+    background: #100720;
+    align-self: center;
+    transition: 0.1s;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+  
+#navigation::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(234,83,88,1) 17.8%, rgba(70,34,85,1) 100.2% );
+    filter: blur(15px);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+  
+#navigation:active {
+    /* transform: scale(0.9) rotate(3deg); */
+    background: radial-gradient( circle farthest-corner at 10% 20%,  rgba(234,83,88,1) 17.8%, rgba(70,34,85,1) 100.2% );
+    transition: 0.5s;
 }

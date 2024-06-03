@@ -3,6 +3,7 @@ import getTrendingShows from "../Backend/TVShowService";
 import { getBestRatedMovies } from "../Backend/MovieService";               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
 import { getBestRatedShows } from "../Backend/TVShowService";
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import '../Stylesheets/style.css'
 import '../Stylesheets/homepageStyle.css'
 import Card from './Card'
@@ -12,7 +13,17 @@ const Homepage = () => {
     const [ratedMovies, setRatedMovies] = useState([])
     const [trendingShows, setTrendingShows] = useState([]);
     const [ratedShows, setRatedShows] = useState([])
-    
+
+    const navigate = useNavigate()
+
+    const navigateToTrending = () => {
+        navigate('/Trending')
+    }
+
+    const navigateToHighestScore = () => {
+        navigate('/HighestScore')
+    }
+
     useEffect(() => {
         const fetchTrendingMovies = async () => {
             const data = await getTrendingMovies(1);
@@ -20,7 +31,7 @@ const Homepage = () => {
                 setTrendingMovies(data.results);
             }
         };
-        
+
         fetchTrendingMovies();
     }, []);
 
@@ -31,7 +42,7 @@ const Homepage = () => {
                 setTrendingShows(data.results);
             }
         };
-        
+
         fetchTrendingShows();
     }, []);
 
@@ -42,7 +53,7 @@ const Homepage = () => {
                 setRatedMovies(data.results);
             }
         };
-        
+
         fetchRatedMovies();
     }, []);
 
@@ -53,23 +64,24 @@ const Homepage = () => {
                 setRatedShows(data.results);
             }
         };
-        
+
         fetchRatedShows();
     }, []);
 
-    return(
+    return (
         <div className="homepageContainer">
             <div className="startpage-section">
                 <div className="trendingMovies">
                     <h2 className="titles"><u>Top 10 Trending Movies</u></h2>
                     <div className="cardContainer">
                         {trendingMovies.filter((movie, index) => index < 10).map((movie) => (
-                            <Card 
+                            <Card
                                 key={movie.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                title={movie.title} 
+                                title={movie.title}
                             />
                         ))}
+                        <button onClick={navigateToTrending} id="navigation">See more...</button>
                     </div>
                 </div>
 
@@ -77,12 +89,13 @@ const Homepage = () => {
                     <h2 className="titles"><u>Top 10 Trending Shows</u></h2>
                     <div className="cardContainer">
                         {trendingShows.filter((show, index) => index < 10).map((show) => (
-                            <Card 
+                            <Card
                                 key={show.id}
-                                imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`} 
-                                title={show.title} 
+                                imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
+                                title={show.title}
                             />
                         ))}
+                        <button onClick={navigateToTrending} id="navigation">See more...</button>
                     </div>
                 </div>
 
@@ -90,12 +103,13 @@ const Homepage = () => {
                     <h2 className="titles"><u>Top 10 Rated Movies</u></h2>
                     <div className="cardContainer">
                         {ratedMovies.filter((movie, index) => index < 10).map((movie) => (
-                            <Card 
+                            <Card
                                 key={movie.id}
-                                imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                                title={movie.title} 
+                                imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                title={movie.title}
                             />
                         ))}
+                        <button onClick={navigateToHighestScore} id="navigation">See more...</button>
                     </div>
                 </div>
 
@@ -103,12 +117,13 @@ const Homepage = () => {
                     <h2 className="titles"><u>Top 10 Rated Shows</u></h2>
                     <div className="cardContainer">
                         {ratedShows.filter((show, index) => index < 10).map((show) => (
-                            <Card 
+                            <Card
                                 key={show.id}
-                                imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`} 
-                                title={show.title} 
+                                imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
+                                title={show.title}
                             />
                         ))}
+                        <button onClick={navigateToHighestScore} id="navigation">See more...</button>
                     </div>
                 </div>
             </div>
