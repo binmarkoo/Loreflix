@@ -1,0 +1,11 @@
+.gif-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+}
+
+.gif {
+    border-style: solid;
+    border-radius: 30px;
+    border-color: #462255;
+}
