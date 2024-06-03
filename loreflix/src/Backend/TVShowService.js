@@ -10,6 +10,7 @@ const getTrendingShows = async (page) => {
     try {
         const response = await fetch('https://api.themoviedb.org/3/trending/tv/day?language=en-US&page=' + page, options);
         const data = await response.json();
+        console.log(data)
         return data;
     } catch (err) {
         console.error(err);
@@ -20,7 +21,6 @@ export const getBestRatedShows = async (page) => {
     try {
         const response = await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=' + page, options)
         const data = await response.json()
-        console.log(data)
         return data
     } catch (err) {
         console.error(err)
