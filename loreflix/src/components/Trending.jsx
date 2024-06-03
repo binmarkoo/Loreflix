@@ -1,6 +1,6 @@
-import getTrendingMovies from "../Backend/MovieService";               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
-import getTrendingShows from "../Backend/TVShowService";
-import React, { useEffect, useState } from 'react';
+import getTrendingMovies from "../Backend/MovieService"               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
+import getTrendingShows from "../Backend/TVShowService"
+import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import '../Stylesheets/style.css'
 import '../Stylesheets/highestScoreStyle.css'
@@ -20,25 +20,25 @@ const Trending = () => {
 
     useEffect(() => {
         const fetchTrendingMovies = async () => {
-            const data = await getTrendingMovies(page);
+            const data = await getTrendingMovies(page)
             if (data && data.results) {
-                setTrendingMovies(data.results);
+                setTrendingMovies(data.results)
             }
-        };
+        }
 
-        fetchTrendingMovies();
-    }, [page]);
+        fetchTrendingMovies()
+    }, [page])
 
     useEffect(() => {
         const fetchTrendingShows = async () => {
-            const data = await getTrendingShows(page);
+            const data = await getTrendingShows(page)
             if (data && data.results) {
-                setTrendingShows(data.results);
+                setTrendingShows(data.results)
             }
-        };
+        }
 
-        fetchTrendingShows();
-    }, [page]);
+        fetchTrendingShows()
+    }, [page])
 
     // Ich weiß nicht wieso, aber die API responded bei den Trending Movies/Shows bis Page 5 mit entweder 18, 19 oder 20 Stellen im Array.
     // Danach sind es wie gewohnt 20, aber keine Ahnung wieso das so ist. Habs jetzt einfach so stehen lassen.
@@ -86,9 +86,9 @@ const Trending = () => {
                 </div>
                 <div className="button-container">
                     {page > 1 && (
-                        <button onClick={previousPage}>Previous Page</button>
+                        <button onClick={previousPage} id="pageSwitcher">Previous Page</button>
                     )}
-                    <button onClick={nextPage}>Next Page</button>
+                    <button onClick={nextPage} id="pageSwitcher">Next Page</button>
                 </div>
             </div>
         </div>

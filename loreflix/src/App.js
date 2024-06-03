@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Homepage from './components/Homepage';
-import Trending from './components/Trending';
-import HighestScore from './components/HighestScore';
-import Layout from './components/Layout';
-import NoPage from './components/NoPage';
-import SearchResults from './components/SearchResults';
-import CardContent from './components/CardContent';
-import './App.css';
+import Homepage from './components/Homepage'
+import Trending from './components/Trending'
+import HighestScore from './components/HighestScore'
+import Layout from './components/Layout'
+import NoPage from './components/NoPage'
+import SearchResults from './components/SearchResults'
+import CardContent from './components/CardContent'
+import './App.css'
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,6 +1,6 @@
-import { getBestRatedMovies } from "../Backend/MovieService";               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
-import { getBestRatedShows } from "../Backend/TVShowService";
-import React, { useEffect, useState } from 'react';
+import { getBestRatedMovies } from "../Backend/MovieService"               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
+import { getBestRatedShows } from "../Backend/TVShowService"
+import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import '../Stylesheets/style.css'
 import '../Stylesheets/highestScoreStyle.css'
@@ -20,25 +20,25 @@ const HighestScore = () => {
 
     useEffect(() => {
         const fetchRatedMovies = async () => {
-            const data = await getBestRatedMovies(page);
+            const data = await getBestRatedMovies(page)
             if (data && data.results) {
-                setRatedMovies(data.results);
+                setRatedMovies(data.results)
             }
         };
 
-        fetchRatedMovies();
-    }, [page]);
+        fetchRatedMovies()
+    }, [page])
 
     useEffect(() => {
         const fetchRatedShows = async () => {
-            const data = await getBestRatedShows(page);
+            const data = await getBestRatedShows(page)
             if (data && data.results) {
-                setRatedShows(data.results);
+                setRatedShows(data.results)
             }
         };
 
-        fetchRatedShows();
-    }, [page]);
+        fetchRatedShows()
+    }, [page])
 
     return (
         <div className="rating-section">
@@ -84,9 +84,9 @@ const HighestScore = () => {
                 </div>
                 <div className="button-container">
                     {page > 1 && (
-                        <button onClick={previousPage}>Previous Page</button>
+                        <button onClick={previousPage} id="pageSwitcher">Previous Page</button>
                     )}
-                    <button onClick={nextPage}>Next Page</button>
+                    <button onClick={nextPage} id="pageSwitcher">Next Page</button>
                 </div>
             </div>
         </div>

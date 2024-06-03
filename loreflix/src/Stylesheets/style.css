@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 #title {
-    color: white;
-    font-size: xx-large;
+  color: white;
+  font-size: xx-large;
 }
 
-h1{
-    color: #fff;
+h1 {
+  color: #fff;
 }
 
-body{
-    background-color: #181818;
-    padding-top: 80px;
+body {
+  background-color: #181818;
+  padding-top: 80px;
 }
 
 * {
@@ -24,7 +24,8 @@ body{
 .nav {
   /* position: fixed; */
   position: fixed;
-  z-index: 9999;               /* Ohne dem würde der Content die Navbar überlappen, hab auf die schnelle keine bessere Lösung gefunden */
+  z-index: 9999;
+  /* Ohne dem würde der Content die Navbar überlappen, hab auf die schnelle keine bessere Lösung gefunden */
   top: 0;
   left: 0;
   width: 100%;
@@ -50,26 +51,32 @@ a {
   color: #fff;
   text-decoration: none;
 }
+
 .nav .logo {
   font-size: 22px;
   font-weight: 500;
 }
+
 .nav .nav-links {
   column-gap: 20px;
   list-style: none;
 }
+
 .nav .nav-links a {
   transition: all 0.2s linear;
 }
+
 .nav.openSearch .nav-links a {
   opacity: 0;
   pointer-events: none;
 }
+
 .nav .search-icon {
   color: #fff;
   font-size: 20px;
   cursor: pointer;
 }
+
 .nav .search-box {
   position: absolute;
   right: 250px;
@@ -80,10 +87,12 @@ a {
   pointer-events: none;
   transition: all 0.2s linear;
 }
+
 .nav.openSearch .search-box {
   opacity: 1;
   pointer-events: auto;
 }
+
 .search-box .search-icon {
   position: absolute;
   left: 15px;
@@ -92,6 +101,7 @@ a {
   color: #4a98f7;
   transform: translateY(-50%);
 }
+
 .search-box input {
   height: 100%;
   width: 100%;
@@ -112,27 +122,34 @@ a {
   .nav {
     padding: 15px 100px;
   }
+
   .nav .search-box {
     right: 150px;
   }
 }
+
 @media screen and (max-width: 950px) {
   .nav {
     padding: 15px 50px;
   }
+
   .nav .search-box {
     right: 100px;
     max-width: 400px;
   }
 }
+
 @media screen and (max-width: 768px) {
+
   .nav .navOpenBtn,
   .nav .navCloseBtn {
     display: block;
   }
+
   .nav {
     padding: 15px 20px;
   }
+
   .nav .nav-links {
     position: fixed;
     top: 0;
@@ -148,14 +165,17 @@ a {
     transition: all 0.4s ease;
     z-index: 100;
   }
+
   .nav.openNav .nav-links {
     left: 0;
   }
+
   .nav .navOpenBtn {
     color: #fff;
     font-size: 20px;
     cursor: pointer;
   }
+
   .nav .navCloseBtn {
     position: absolute;
     top: 20px;
@@ -164,6 +184,7 @@ a {
     font-size: 20px;
     cursor: pointer;
   }
+
   .nav .search-box {
     top: calc(100% + 10px);
     max-width: calc(100% - 20px);
@@ -191,5 +212,3 @@ a {
   box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
   background-color: white;
 }
-
-
