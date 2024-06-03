@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Card from './Card';
 import { getShowBySearch } from '../Backend/TVShowService';
-//import '../Stylesheets/searchResultsStyle.css';
+import { getMovieBySearch } from '../Backend/MovieService';
+import '../Stylesheets/searchStyle.css';
 
 const SearchResults = () => {
     const [results, setResults] = useState([]);
@@ -10,15 +11,19 @@ const SearchResults = () => {
     const query = searchParams.get('query'); //input from searchbar
 
     useEffect(() => {
-        const fetchShowBySearch = async () => {
+        const fetchBySearch = async () => {
             const data = await getShowBySearch(1, query);
+            const data2 = await getMovieBySearch(1, query);
+            const combinedResults = []
             if (data && data.results) {
-                setResults(data.results);
+                combinedResults.push(...data.results)
+                combinedResults.push(...data2.results)
+                setResults(combinedResults)
             }
         };
 
         if (query) {
-            fetchShowBySearch();
+            fetchBySearch();
         }
     }, [query]); //Dependency Array bedeutet wenn query sich ändert wird useEffect nochmal aufgerufen
 

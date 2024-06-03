@@ -27,4 +27,16 @@ export const getBestRatedMovies = async (page) => {
     }
 }
 
+export const getMovieBySearch = async (page, input) => {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${input}&include_adult=true&language=en-US&page=` + page, options)
+        const data = await response.json()
+        console.log(data)
+        return data
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+
 export default getTrendingMovies
