@@ -9,17 +9,20 @@ const SearchResults = () => {
     const [results, setResults] = useState([]);
     const [searchParams] = useSearchParams();
     const query = searchParams.get('query'); //input from searchbar
+    const pagecount = 1;
 
     useEffect(() => {
         const fetchBySearch = async () => {
-            const data = await getShowBySearch(1, query);
-            const data2 = await getMovieBySearch(1, query);
             const combinedResults = []
-            if (data && data.results) {
-                combinedResults.push(...data.results)
-                combinedResults.push(...data2.results)
-                setResults(combinedResults)
+            for (let page = 1; page <= pagecount; page++) {
+                const data = await getShowBySearch(1, query);
+                const data2 = await getMovieBySearch(1, query);
+                if (data && data.results) {
+                    combinedResults.push(...data.results)
+                    combinedResults.push(...data2.results)
+                }  
             }
+            setResults(combinedResults) 
         };
 
         if (query) {

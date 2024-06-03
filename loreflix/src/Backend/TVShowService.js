@@ -29,7 +29,7 @@ export const getBestRatedShows = async (page) => {
 
 export const getShowBySearch = async (page, input) => {
     try {
-        const response = await fetch(`https://api.themoviedb.org/3/search/tv?query=${input}&include_adult=true&language=en-US&page=` + page, options)
+        const response = await fetch(`https://api.themoviedb.org/3/search/tv?query=${input}&include_adult=false&language=en-US&page=` + page, options)
         const data = await response.json()
         console.log(data)
         return data
