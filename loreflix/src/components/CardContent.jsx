@@ -1,6 +1,9 @@
 const CardContent = () => {
-    return(
-        <h1>Content</h1>
+
+    return (
+        <div className="content-container">
+            <h2>Content</h2>
+        </div>
     )
 }
 
