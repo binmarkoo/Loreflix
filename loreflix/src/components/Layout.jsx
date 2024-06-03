@@ -1,7 +1,18 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
 import '../Stylesheets/style.css';
 
 const Layout = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            navigate(`/search?query=${searchQuery}`);
+            //navigate('/search')
+        }
+    };
+
     return (
         <div>
             <nav className="nav">
@@ -16,8 +27,14 @@ const Layout = () => {
                     <li>
                         <Link to="/Trending"><u>Trending Right now</u></Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/SearchResults"><u>Search Movies</u></Link>
+                    </li> */}
+                    <li>
+                        <input class="searchbar" id="searchbar" placeholder="Search for movies and shows"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={handleSearch}/>
                     </li>
                 </ul>
             </nav>

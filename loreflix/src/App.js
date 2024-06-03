@@ -16,7 +16,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="trending" element={<Trending />} />
           <Route path="highestscore" element={<HighestScore />} />
-          <Route path="searchresults" element={<SearchResults />} />
+          <Route path="search" element={<SearchResults />} />
           <Route path="content" element={<CardContent />} />
           <Route path="*" element={<NoPage />} />
         </Route>
