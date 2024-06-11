@@ -13,10 +13,14 @@ const Layout = () => {
         }
     }
 
+    const goToHome = () => {
+        navigate('/')
+    }
+
     return (
         <div>
             <nav className="nav">
-                <h1 id="title">Loreflix</h1>
+                <h1 id="title" onClick={goToHome}>Loreflix</h1>
                 <ul className="nav-links">
                     <li>
                         <Link to="/"><u>Home</u></Link>
