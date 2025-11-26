@@ -1,7 +1,8 @@
-import { getBestRatedMovies } from "../Backend/MovieService"               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
+import { getBestRatedMovies } from "../Backend/MovieService"
 import { getBestRatedShows } from "../Backend/TVShowService"
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
+import Modal from './Modal'
 import '../Stylesheets/style.css'
 import '../Stylesheets/highestScoreStyle.css'
 
@@ -9,6 +10,8 @@ const HighestScore = () => {
     const [ratedMovies, setRatedMovies] = useState([])
     const [ratedShows, setRatedShows] = useState([])
     const [page, setPage] = useState(1)
+    const [selectedItem, setSelectedItem] = useState(null)
+    const [selectedType, setSelectedType] = useState(null)
 
     const nextPage = () => {
         setPage(page + 1)
@@ -16,6 +19,16 @@ const HighestScore = () => {
 
     const previousPage = () => {
         setPage(page - 1)
+    }
+
+    const handleCardClick = (item, type) => {
+        setSelectedItem(item)
+        setSelectedType(type)
+    }
+
+    const closeModal = () => {
+        setSelectedItem(null)
+        setSelectedType(null)
     }
 
     useEffect(() => {
@@ -46,11 +59,11 @@ const HighestScore = () => {
                 <h2 className="titles"><u>Best Rated Movies</u></h2>
                 <div className="movie-cards">
                     {ratedMovies.map((movie) => (
-                        <div className="cards">
+                        <div className="cards" key={movie.id}>
                             <Card
-                                key={movie.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 title={movie.title}
+                                onClick={() => handleCardClick(movie, 'movie')}
                             />
                             <div className="card-description">
                                 <h2>{movie.title}</h2>
@@ -67,11 +80,11 @@ const HighestScore = () => {
                 <h2 className="titles"><u>Best Rated Shows</u></h2>
                 <div className="show-cards">
                     {ratedShows.map((show) => (
-                        <div className="cards">
+                        <div className="cards" key={show.id}>
                             <Card
-                                key={show.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
-                                title={show.title}
+                                title={show.name}
+                                onClick={() => handleCardClick(show, 'tv')}
                             />
                             <div className="card-description">
                                 <h2>{show.name}</h2>
@@ -89,6 +102,14 @@ const HighestScore = () => {
                     <button onClick={nextPage} id="pageSwitcher">Next Page</button>
                 </div>
             </div>
+
+            {selectedItem && (
+                <Modal 
+                    item={selectedItem} 
+                    type={selectedType} 
+                    onClose={closeModal} 
+                />
+            )}
         </div>
     )
 }

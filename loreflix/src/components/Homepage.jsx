@@ -1,18 +1,21 @@
 import getTrendingMovies from "../Backend/MovieService"
 import getTrendingShows from "../Backend/TVShowService"
-import { getBestRatedMovies } from "../Backend/MovieService"               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
+import { getBestRatedMovies } from "../Backend/MovieService"
 import { getBestRatedShows } from "../Backend/TVShowService"
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import '../Stylesheets/style.css'
 import '../Stylesheets/homepageStyle.css'
 import Card from './Card'
+import Modal from './Modal'
 
 const Homepage = () => {
     const [trendingMovies, setTrendingMovies] = useState([])
     const [ratedMovies, setRatedMovies] = useState([])
     const [trendingShows, setTrendingShows] = useState([])
     const [ratedShows, setRatedShows] = useState([])
+    const [selectedItem, setSelectedItem] = useState(null)
+    const [selectedType, setSelectedType] = useState(null)
 
     const navigate = useNavigate()
 
@@ -22,6 +25,16 @@ const Homepage = () => {
 
     const navigateToHighestScore = () => {
         navigate('/HighestScore')
+    }
+
+    const handleCardClick = (item, type) => {
+        setSelectedItem(item)
+        setSelectedType(type)
+    }
+
+    const closeModal = () => {
+        setSelectedItem(null)
+        setSelectedType(null)
     }
 
     useEffect(() => {
@@ -79,6 +92,7 @@ const Homepage = () => {
                                 key={movie.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 title={movie.title}
+                                onClick={() => handleCardClick(movie, 'movie')}
                             />
                         ))}
                         <button onClick={navigateToTrending} id="navigation">See more...</button>
@@ -92,7 +106,8 @@ const Homepage = () => {
                             <Card
                                 key={show.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
-                                title={show.title}
+                                title={show.name}
+                                onClick={() => handleCardClick(show, 'tv')}
                             />
                         ))}
                         <button onClick={navigateToTrending} id="navigation">See more...</button>
@@ -107,6 +122,7 @@ const Homepage = () => {
                                 key={movie.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 title={movie.title}
+                                onClick={() => handleCardClick(movie, 'movie')}
                             />
                         ))}
                         <button onClick={navigateToHighestScore} id="navigation">See more...</button>
@@ -120,13 +136,22 @@ const Homepage = () => {
                             <Card
                                 key={show.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
-                                title={show.title}
+                                title={show.name}
+                                onClick={() => handleCardClick(show, 'tv')}
                             />
                         ))}
                         <button onClick={navigateToHighestScore} id="navigation">See more...</button>
                     </div>
                 </div>
             </div>
+
+            {selectedItem && (
+                <Modal 
+                    item={selectedItem} 
+                    type={selectedType} 
+                    onClose={closeModal} 
+                />
+            )}
         </div>
     )
 }

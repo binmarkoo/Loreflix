@@ -1,7 +1,8 @@
-import getTrendingMovies from "../Backend/MovieService"               // Keine Ahnung Warum, aber die geschwungenen Klammern müssen dableiben ^^
+import getTrendingMovies from "../Backend/MovieService"
 import getTrendingShows from "../Backend/TVShowService"
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
+import Modal from './Modal'
 import '../Stylesheets/style.css'
 import '../Stylesheets/highestScoreStyle.css'
 
@@ -9,6 +10,8 @@ const Trending = () => {
     const [trendingMovies, setTrendingMovies] = useState([])
     const [trendingShows, setTrendingShows] = useState([])
     const [page, setPage] = useState(1)
+    const [selectedItem, setSelectedItem] = useState(null)
+    const [selectedType, setSelectedType] = useState(null)
 
     const nextPage = () => {
         setPage(page + 1)
@@ -16,6 +19,16 @@ const Trending = () => {
 
     const previousPage = () => {
         setPage(page - 1)
+    }
+
+    const handleCardClick = (item, type) => {
+        setSelectedItem(item)
+        setSelectedType(type)
+    }
+
+    const closeModal = () => {
+        setSelectedItem(null)
+        setSelectedType(null)
     }
 
     useEffect(() => {
@@ -40,19 +53,17 @@ const Trending = () => {
         fetchTrendingShows()
     }, [page])
 
-    // Ich weiß nicht wieso, aber die API responded bei den Trending Movies/Shows bis Page 5 mit entweder 18, 19 oder 20 Stellen im Array.
-    // Danach sind es wie gewohnt 20, aber keine Ahnung wieso das so ist. Habs jetzt einfach so stehen lassen.
     return (
         <div className="rating-section">
             <div className="ratedMovies">
                 <h2 className="titles"><u>Best Trending Movies</u></h2>
                 <div className="movie-cards">
                     {trendingMovies.map((movie) => (
-                        <div className="cards">
+                        <div className="cards" key={movie.id}>
                             <Card
-                                key={movie.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 title={movie.title}
+                                onClick={() => handleCardClick(movie, 'movie')}
                             />
                             <div className="card-description">
                                 <h2>{movie.title}</h2>
@@ -69,11 +80,11 @@ const Trending = () => {
                 <h2 className="titles"><u>Best Trending Shows</u></h2>
                 <div className="show-cards">
                     {trendingShows.map((show) => (
-                        <div className="cards">
+                        <div className="cards" key={show.id}>
                             <Card
-                                key={show.id}
                                 imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
-                                title={show.title}
+                                title={show.name}
+                                onClick={() => handleCardClick(show, 'tv')}
                             />
                             <div className="card-description">
                                 <h2>{show.name}</h2>
@@ -91,6 +102,14 @@ const Trending = () => {
                     <button onClick={nextPage} id="pageSwitcher">Next Page</button>
                 </div>
             </div>
+
+            {selectedItem && (
+                <Modal 
+                    item={selectedItem} 
+                    type={selectedType} 
+                    onClose={closeModal} 
+                />
+            )}
         </div>
     )
 }
