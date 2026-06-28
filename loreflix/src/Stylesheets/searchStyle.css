@@ -1,17 +1,23 @@
-.results-title{
-    color: #fff;
-    margin-bottom: 1em;
-}
 .searchResultsContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    margin-top: 40px;
-    width: 90%;
-    margin-left: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px clamp(20px, 6vw, 120px) 60px;
+  width: 100%;
 }
 
-.cardContainer{
-    flex-wrap: wrap;
-    justify-content: left;
+.results-title {
+  color: var(--ink);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2em;
+}
+.results-title::first-line { color: var(--amber); }
+
+.searchResultsContainer .cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: flex-start;
 }

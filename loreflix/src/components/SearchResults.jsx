@@ -32,10 +32,23 @@ const SearchResults = () => {
                 const data2 = await getMovieBySearch(1, query);
                 if (data && data.results) {
                     combinedResults.push(...data.results.map(item => ({ ...item, type: 'tv' })))
+                }
+                if (data2 && data2.results) {
                     combinedResults.push(...data2.results.map(item => ({ ...item, type: 'movie' })))
                 }
             }
-            setResults(combinedResults)
+
+            // Nur Ergebnisse mit Poster behalten und nach Relevanz sortieren:
+            // primär Popularität, bei Gleichstand die Anzahl der Stimmen.
+            const sortedResults = combinedResults
+                .filter(item => item.poster_path)
+                .sort((a, b) => {
+                    const popDiff = (b.popularity || 0) - (a.popularity || 0)
+                    if (popDiff !== 0) return popDiff
+                    return (b.vote_count || 0) - (a.vote_count || 0)
+                })
+
+            setResults(sortedResults)
         }
 
         if (query) {

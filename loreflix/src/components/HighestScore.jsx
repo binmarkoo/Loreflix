@@ -59,11 +59,10 @@ const HighestScore = () => {
                 <h2 className="titles"><u>Best Rated Movies</u></h2>
                 <div className="movie-cards">
                     {ratedMovies.map((movie) => (
-                        <div className="cards" key={movie.id}>
+                        <div className="cards" key={movie.id} onClick={() => handleCardClick(movie, 'movie')} style={{ cursor: 'pointer' }}>
                             <Card
                                 imgSrc={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 title={movie.title}
-                                onClick={() => handleCardClick(movie, 'movie')}
                             />
                             <div className="card-description">
                                 <h2>{movie.title}</h2>
@@ -80,11 +79,10 @@ const HighestScore = () => {
                 <h2 className="titles"><u>Best Rated Shows</u></h2>
                 <div className="show-cards">
                     {ratedShows.map((show) => (
-                        <div className="cards" key={show.id}>
+                        <div className="cards" key={show.id} onClick={() => handleCardClick(show, 'tv')} style={{ cursor: 'pointer' }}>
                             <Card
                                 imgSrc={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
                                 title={show.name}
-                                onClick={() => handleCardClick(show, 'tv')}
                             />
                             <div className="card-description">
                                 <h2>{show.name}</h2>

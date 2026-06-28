@@ -1,31 +1,61 @@
+/* =========================================================
+   Movie / Show poster card — the signature element.
+   Sits in a thin gradient frame; lifts and glows on hover.
+   ========================================================= */
 .card {
-    --background: linear-gradient(to left, #462255 0%, #ea5358 100%);
-    width: 130px;
-    height: 190px;
-    padding: 5px;
-    border-radius: 1rem;
-    overflow: visible;
-
-    background: var(--background);
-    position: relative;
-    z-index: 1;
+  --frame: linear-gradient(150deg, rgba(245, 185, 66, 0.9), rgba(234, 83, 88, 0.85) 45%, rgba(157, 59, 209, 0.9));
+  width: 150px;
+  height: 222px;
+  padding: 2px;
+  border-radius: 14px;
+  background: var(--frame);
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: var(--frame);
+  filter: blur(16px);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 22px 40px -10px rgba(0, 0, 0, 0.65);
+}
+.card:hover::after { opacity: 0.7; }
 
 .card-info {
-    --color: #181818;
-    background: var(--color);
-    color: var(--color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    border-radius: .7rem;
+  background: #0d0c11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
+.card-info img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px !important;
+  transition: transform 0.4s ease;
+}
+.card:hover .card-info img { transform: scale(1.06); }
+
 .card .title {
-    font-weight: bold;
-    letter-spacing: .1em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
